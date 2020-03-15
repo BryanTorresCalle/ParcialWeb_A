@@ -4,7 +4,8 @@
       <div class="title">Control de IMC</div>
 
       <div class="buttons">
-        <b-button href="/createUser" variant="primary" size="lg">Cear usuario</b-button>
+        <b-button href="/createUser" variant="primary" size="lg">Crear usuario</b-button>
+        <br>
         <b-button href="/users" variant="primary" size="lg">Ver Usuarios</b-button>
       </div>
 
@@ -12,7 +13,6 @@
     </b-container>
   </div>
 </template>
-
 
 
 <style>

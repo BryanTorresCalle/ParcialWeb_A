@@ -11,7 +11,7 @@
         </b-form-group>
 
         <b-form-group>
-          <b-form-input v-model="user.ID" id="Id"  required type="number"  placeholder="Ingrese su Identificación" ></b-form-input>
+          <b-form-input v-model="user.ID"   required type="number"  placeholder="Ingrese su Identificación" id="Id" ></b-form-input>
         </b-form-group>
 
         <b-form-group>
@@ -26,12 +26,12 @@
           <b-form-input v-model="user.email" id="email" type="email" required placeholder="Ingrese su Correo electrónico" ></b-form-input>
         </b-form-group>
 
-        <b-form-group>
-          <b-form-input v-model="user.weight" id="weight" type="number" step="any" required placeholder="Ingrese su peso" ></b-form-input>
+        <b-form-group label="Peso en Kilogramos" label-for="weight">
+          <b-form-input v-model="user.weight" id="weight" type="number" step="any" required  ></b-form-input>
         </b-form-group>
 
-        <b-form-group>
-          <b-form-input v-model="user.height" id="height" type="number" step="any" required placeholder="Ingrese su altura" ></b-form-input>
+        <b-form-group label="Altura en metros" label-for="height">
+          <b-form-input v-model="user.height" id="height" type="number" step="any" required  ></b-form-input>
         </b-form-group>
 
        

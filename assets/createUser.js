@@ -14,7 +14,8 @@ export default {
                 height: 0,
                 imc: 0,
                 acciones: true
-            }, listUsers: [
+            },
+            listUsers: [
                 {
                     typeID: "CC",
                     ID: "001",
@@ -34,16 +35,18 @@ export default {
                 "TI"
             ]
         };
+    },mounted() {
+        this.getLocalStorage()
     },
     methods: {
         create() {
             if (this.exists(this.user)) {
                 alert("Este usuario ya existe")
             } else {
-                this.user.imc = this.user.weight / (2 * this.user.height)
+                this.user.imc = (this.user.weight / Math.pow( this.user.height, 2)).toFixed(2) 
 
                 this.listUsers.push(this.user);
-                alert("Usuario agregado, su IMC es de: ", this.user.imc)
+                alert("Usuario agregado, su IMC es de: " + this.user.imc)
                 this.user = {
                     typeID: "",
                     ID: "",
@@ -60,45 +63,18 @@ export default {
             };
 
         },
-        exists({ item }) {
+        exists( item ) {
+            console.log(item)
             for (let i = 0; i < this.listUsers.length; i++) {
-                if (this.listUsers[i].ID == item.ID) {
-                  return true
-                }
-              }
+                if(this.listUsers[i].ID == item.ID) return true
+            }
+            return false;
         },
         saveLocalStorage() {
             localStorage.setItem("users", JSON.stringify(this.listUsers));
         },
         getLocalStorage() {
             if (localStorage.getItem("users")) this.listUsers = JSON.parse(localStorage.getItem("users"));
-        },
-        loadUser({ item }) {
-            let user = this.listUsers.find(u => u.ID == item.ID);
-            this.inEdition = true;
-            this.user = Object.assign({}, user);
-            this.saveLocalStorage();
-
-        }, deleteUser({ item }) {
-            let pos = this.listUsers.findIndex(u => u.ID == item.ID);
-            this.listUsers.splice(pos, 1);
-            this.saveLocalStorage();
-        }, updateUser() {
-            let pos = this.listUsers.findIndex(u => u.ID == this.user.ID);
-            this.listUsers.splice(pos, 1, this.user);
-            this.user = {
-                typeID: "",
-                ID: "",
-                name: "",
-                lastName: "",
-                email: "",
-                weight: 0,
-                height: 0,
-                imc: 0,
-                acciones: true
-            };
-            this.saveLocalStorage();
-            this.inEdition = false;
         }
 
     }
