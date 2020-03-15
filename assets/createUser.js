@@ -76,6 +76,7 @@ export default {
         getLocalStorage() {
             if (localStorage.getItem("users")) this.listUsers = JSON.parse(localStorage.getItem("users"));
         }
+       
 
     }
 };
